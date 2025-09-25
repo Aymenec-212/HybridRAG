@@ -1,0 +1,6 @@
+timestamp,question,expected_doc_id,retrieved_doc_id,distance,correct
+2025-09-11T17:37:17.816926,À quelle matière la gestion des infractions au présent dahir est-elle assimilée ?,ca8e75d4-8d91-11f0-834f-c21d92bed944,ca8e75d4-8d91-11f0-834f-c21d92bed944,0.5203084325422691,True
+2025-09-11T17:37:18.859170,Quel est l'objectif principal du Fonds de développement du crin végétal ?,cf8fe93c-8d91-11f0-bf52-149d4e5d0161,cf8fe93c-8d91-11f0-bf52-149d4e5d0161,0.3074470208679886,True
+2025-09-11T17:37:19.904807,"Par quel texte de loi l'article 5, relatif à la destination des avoirs du Fonds de développement, a-t-il été supprimé ?",cbc02c72-8d91-11f0-ab6b-7c2fbe81e700,cbc02c72-8d91-11f0-ab6b-7c2fbe81e700,0.3857362500271936,True
+2025-09-11T17:37:20.313586,Par quel texte de loi l'article 6 concernant le stock de sécurité a-t-il été supprimé ?,c93d3198-8d91-11f0-aa27-c1b0b8f49521,c93d3198-8d91-11f0-aa27-c1b0b8f49521,0.4752302169799656,True
+2025-09-11T17:37:20.819391,"En cas de contestation, que sont tenus de faire les redevables concernant les sommes contestées ?",c7fd768a-8d91-11f0-8d30-ca266fbcc6be,c7fd768a-8d91-11f0-8d30-ca266fbcc6be,0.49961608652875356,True

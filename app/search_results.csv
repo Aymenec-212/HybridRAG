@@ -1,0 +1,44 @@
+id,content,embedding,distance,title,category,date_created,date_modified,document_type,effective_date
+d0ffed12-8d91-11f0-a68d-385fb7021d3c,"""
+
+
+
+**Taxe sur les bois importées (refondu)
+
+Article 6 de la loi de finances pour l'année 1986 n°33-85
+
+instituant la taxe sur les bois importées**
+
+Il est créé une taxe au taux de 12%
+
+ad valorem
+
+sur les bois et ouvrages en bois, importés (chapitre 44 de la nomenclature générale des produits). Toutefois, le taux de cette taxe est fixé à 6%
+
+ad valorem
+
+pour le bois brut non traité d'Okoume en rondins d'une circonférence au gros bout supérieure ou égale à 60 cm. Cette taxe qui est à la charge de l'importateur, est liquidée et perçue, les infractions constatées et réprimées et les poursuites effectuées comme en matière de douanes.
+
+Les instances sont introduites devant les tribunaux qui instruisent et jugent comme en matière de douane
+
+Le produit des amendes et transactions est réparti comme en matière de douane
+
+""","[ 0.03059878  0.0398949   0.03133799 ...  0.02452831 -0.01090334
+  0.01821143]",0.21951823409064686,Taxe sur les bois importées (refondu),Douanes,,,loi,
+caf487c0-8d91-11f0-8073-66edb9eadd7e,"""
+
+
+
+**Taxe sur les bois importés
+
+Article 10 de la loi de finances pour l'année 1986 n°33-85 instituant la taxe sur les bois importés**
+
+Il est créé une taxe sur les bois importés dont le taux est fixé à 6% ad valorem. Cette taxe qui est à la charge de l'importateur, est liquidée et perçue, les infractions constatées et réprimées et les poursuites réprimés comme en matière de douane.
+
+Les instances sont introduites devant les tribunaux qui instruisent et jugent comme en matière de douane
+
+Le produit des amendes et transactions est réparti comme en matière de douane
+
+""","[ 0.03054385  0.03402769  0.03606541 ...  0.02311604 -0.0170248
+  0.01749589]",0.22878291950022211,"Taxe sur les bois importés
+Article 10 de la loi de finances pour l'année 1986 n°33-85 instituant la taxe sur les bois importés",douanes,,,loi,

@@ -1,36 +1,34 @@
 from typing import List
 import pandas as pd
 from pydantic import BaseModel, Field
-from services.llm_factory import LLMFactory
+from app.services.llm_factory import LLMFactory
 
 
 class SynthesizedResponse(BaseModel):
     thought_process: List[str] = Field(
-        description="List of thoughts that the AI assistant had while synthesizing the answer"
+        description="Liste des réflexions que l'assistant IA a eues en synthétisant la réponse"
     )
-    answer: str = Field(description="The synthesized answer to the user's question")
+    answer: str = Field(description="La réponse synthétisée à la question de l'utilisateur")
     enough_context: bool = Field(
-        description="Whether the assistant has enough context to answer the question"
+        description="Indique si l'assistant dispose de suffisamment de contexte pour répondre à la question"
     )
 
 
 class Synthesizer:
     SYSTEM_PROMPT = """
-    # Role and Purpose
-    You are an AI assistant for an e-commerce FAQ system. Your task is to synthesize a coherent and helpful answer 
-    based on the given question and relevant context retrieved from a knowledge database.
+    # Rôle et Objectif
+    Vous êtes un assistant IA spécialisé dans l'analyse de documents réglementaires et juridiques marocains. 
+    Votre tâche est de synthétiser une réponse cohérente, factuelle et précise en vous basant uniquement sur la question de l'utilisateur et les extraits de textes pertinents fournis en contexte.
 
-    # Guidelines:
-    1. Provide a clear and concise answer to the question.
-    2. Use only the information from the relevant context to support your answer.
-    3. The context is retrieved based on cosine similarity, so some information might be missing or irrelevant.
-    4. Be transparent when there is insufficient information to fully answer the question.
-    5. Do not make up or infer information not present in the provided context.
-    6. If you cannot answer the question based on the given context, clearly state that.
-    7. Maintain a helpful and professional tone appropriate for customer service.
-    8. Adhere strictly to company guidelines and policies by using only the provided knowledge base.
-    
-    Review the question from the user:
+    # Directives Strictes:
+    1.  Exactitude et Précision : Fournir une réponse claire et précise à la question posée. La rigueur est primordiale.
+    2.  Exclusivité du Contexte : Baser votre réponse **exclusivement** sur les informations contenues dans le contexte fourni ("informations extraites"). N'utilisez JAMAIS de connaissances externes ou d'informations préalables.
+    3.  Ne Pas Fabuler : Ne jamais inventer, extrapoler ou inférer des informations qui ne sont pas explicitement présentes dans le contexte. Si une information n'est pas dans le texte, elle n'existe pas pour vous.
+    4.  Gestion de l'Incertitude : Le contexte est extrait via une recherche sémantique et peut être partiel ou non pertinent. Si les informations fournies sont insuffisantes ou ne permettent pas de répondre à la question, déclarez-le clairement. Il est préférable de dire "L'information n'est pas disponible dans les documents fournis" plutôt que de donner une réponse incorrecte.
+    5.  Citation des Sources : Si le contexte le permet (par exemple, en mentionnant un numéro d'article), citez la source de votre information pour garantir la traçabilité.
+    6.  Ton Professionnel : Maintenir un ton formel, neutre et informatif, adapté à un contexte réglementaire. Évitez toute familiarité ou opinion.
+
+    Examinez la question de l'utilisateur :
     """
 
     @staticmethod
@@ -45,15 +43,15 @@ class Synthesizer:
             A SynthesizedResponse containing thought process and answer.
         """
         context_str = Synthesizer.dataframe_to_json(
-            context, columns_to_keep=["content", "category"]
+            context, columns_to_keep=["content"]
         )
 
         messages = [
             {"role": "system", "content": Synthesizer.SYSTEM_PROMPT},
-            {"role": "user", "content": f"# User question:\n{question}"},
+            {"role": "user", "content": f"# Question de l'utilisateur :\n{question}"},
             {
                 "role": "assistant",
-                "content": f"# Retrieved information:\n{context_str}",
+                "content": f"# Informations extraites :\n{context_str}",
             },
         ]
 
@@ -65,8 +63,8 @@ class Synthesizer:
 
     @staticmethod
     def dataframe_to_json(
-        context: pd.DataFrame,
-        columns_to_keep: List[str],
+            context: pd.DataFrame,
+            columns_to_keep: List[str],
     ) -> str:
         """
         Convert the context DataFrame to a JSON string.

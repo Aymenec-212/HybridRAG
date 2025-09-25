@@ -1,10 +1,44 @@
+"""
+vector_store.py
+===================================================================
+Vector database interface for RAG system
+-------------------------------------------------------------------
+
+This module defines the `VectorStore` class, which provides a high-level
+abstraction layer over Timescale Vector (pgvector + TimescaleDB) to manage
+embedding storage, similarity search, and metadata filtering.
+
+Main responsibilities:
+- Generate embeddings for raw text using OpenAI models.
+- Create and manage vector tables and ANN indexes (DiskANN).
+- Insert, update, and delete document embeddings with associated metadata.
+- Perform vector similarity searches with support for:
+  * Metadata filters (dict or list of dicts).
+  * Complex predicates (>, <, ==, >=, <=) combined with AND/OR.
+  * Time-based filtering (UUID-based).
+- Return results as pandas DataFrames for easier inspection and analysis.
+
+Typical usage:
+--------------
+```python
+vec = VectorStore()
+vec.create_tables()
+vec.create_index()
+
+embedding = vec.get_embedding("example text")
+results = vec.search("shipping taxes", limit=5)
+
+vec.upsert(my_dataframe)  # Insert new embeddings
+vec.delete(delete_all=True)  # Clear the store
+"""
+
 import logging
 import time
 from typing import Any, List, Optional, Tuple, Union
 from datetime import datetime
 
 import pandas as pd
-from config.settings import get_settings
+from app.config.settings import get_settings
 from openai import OpenAI
 from timescale_vector import client
 
@@ -50,11 +84,11 @@ class VectorStore:
         return embedding
 
     def create_tables(self) -> None:
-        """Create the necessary tablesin the database"""
+        """Create the necessary tables in the database"""
         self.vec_client.create_tables()
 
     def create_index(self) -> None:
-        """Create the StreamingDiskANN index to spseed up similarity search"""
+        """Create the StreamingDiskANN index to speed up similarity search"""
         self.vec_client.create_embedding_index(client.DiskAnnIndex())
 
     def drop_index(self) -> None:

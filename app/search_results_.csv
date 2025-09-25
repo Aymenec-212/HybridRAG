@@ -1,0 +1,95 @@
+id,content,embedding,distance,title,category,date_created,date_modified,document_type,effective_date
+c9717d90-8d91-11f0-9501-e7c56bd23e44,"""
+
+
+
+**Prélèvement sur le crin végétal importé
+
+Article 2 : Alimentation du fonds ; prélèvement sur le crin végétal exporté**
+
+**Le Fonds de développement du crin végétal est alimenté par un prélèvement sur le crin végétal exporté ainsi qu'éventuellement, par des dons et legs.**
+
+""","[ 0.00263071  0.05007807  0.04174412 ... -0.0029268  -0.03303813
+  0.01072127]",0.7419954394104811,Prélèvement sur le crin végétal importé,Impôts,,,,
+c9f403e6-8d91-11f0-a02a-55c374d50755,"""
+
+
+
+**Redevance sur l'exploitation des phosphates
+
+Article 14 de la loi de finances pour l'année 1992 n°38-91 instituant une redevance sur l'exploitation des phosphates**
+
+exonération en faveur de la société Phosbourâa
+
+Il est institué une redevance, dénommée \""redevance sur l'exploitation des phosphates bruts ou transformés\""
+
+Le taux de la redevance est fixé à 34 dirhams la tonne de phosphate brut
+
+Toutefois, dans le cas des phosphates transformés, la redevance est liquidée et perçue sur les quantités de phosphates bruts ayant servi à la fabrication du produit destiné à l'exportation
+
+La redevance est liquidée et recouvrée, les infractions sont constatées et réprimées, les poursuites sont effectuées et le produit des amendes est réparti comme en matière de douanes
+
+Les instances sont introduites devant les tribunaux qui instruisent et jugent comme en matière de douanes
+
+""","[ 0.01903591  0.0386561   0.01890737 ... -0.0094829   0.00317557
+  0.02855971]",0.7550924122333509,Redevance sur l'exploitation des phosphates Article 14 de la loi de finances pour l'année 1992 n°38-91 instituant une redevance sur l'exploitation des phosphates,impôts,,,loi,
+d034a62a-8d91-11f0-a76b-65f5145793b9,"""
+
+
+
+**Police sanitaire vétérinaire
+
+Dahir n° 1-89-230 du 10 septembre 1993 portant loi n°24-89
+
+Article 4 : Inspection sanitaire**
+
+Décret n° 2-89-597 du 12 octobre 1993 édictant des mesures de police sanitaire vétérinaire à l'importation d'animaux, de denrées animales, de produits d'origine animale, de produits de multiplication animale et de produits de la mer et d'eau douce.
+
+L'inspection sanitaire prescrite à l'article premier ci-dessus est effectuée aussitôt après le déchargement dans l'enceinte douanière aux jours et heures d'ouverture légale des bureaux de douanes. Elle a lieu, pour les animaux dans le lazaret ou dans un local désigné à cet effet par l'autorité sanitaire vétérinaire centrale, et pour les denrées et produits sur les lieux de déchargement.
+
+Toutefois, à titre exceptionnel, l'inspection sanitaire peut, à la demande de l'importateur et à ses frais, avoir lieu un jour férié ou en dehors des heures légales d'ouverture desdits bureaux.
+
+A l'issue de l'inspection sanitaire, le vétérinaire inspecteur du poste frontière délivre un certificat sanitaire vétérinaire. L'enlèvement des animaux, denrées et produits ne doit être autorisé par les services des douanes qu'après production de ce certificat.
+
+""","[ 0.01406278  0.00746246  0.02076948 ...  0.05235476 -0.05101118
+  0.0102    ]",0.7666088044643385,"Décret n° 2-89-597 du 12 octobre 1993 édictant des mesures de police sanitaire vétérinaire à l'importation d'animaux, de denrées animales, de produits d'origine animale, de produits de multiplication animale et de produits de la mer et d'eau douce.",Santé vétérinaire,1993-10-12,,Décret,
+c5aedfd6-8d91-11f0-8968-78d756fc3801,"""
+
+
+
+**Police sanitaire vétérinaire (refondu)
+
+Dahir n° 1-89-230 du 10 septembre 1993 portant loi n°24-89
+
+Article 3 : Documents sanitaires**
+
+Les animaux, denrées ou produits énumérés à l'article premier ci-dessus, y compris ceux en transit international, ne peuvent être admis à l'importation que s'ils sont accompagnés de documents sanitaires délivrés par les autorités sanitaires vétérinaires officielles ou dûment habilitées du pays d'origine et, le cas échéant, du ou des pays de transit.
+
+Toutefois pour les produits d'origine animale visés au
+
+de l'article premier ci-dessus, les documents sanitaires visés à l'alinéa précédent peuvent être présentés après l'admission desdits produits à l'importation.
+
+La vérification des documents sanitaires par les services vétérinaires a lieu après déchargement. Toutefois, elle est effectuée avant déchargement pour les animaux provenant de tous pays, ainsi que pour les produits animaux à l'état brut originaires ou en provenance de pays non reconnus indemnes de maladies contagieuses et pour lesquels il est prescrit les traitements spécifiques prévus au 2
+
+e
+
+alinéa de l'article ci-dessus.
+
+Les types et les énonciations de ces documents sanitaires sont déterminés par voie réglementaire.
+
+""","[ 0.0157002   0.01734994  0.0154234  ...  0.06820396 -0.05474032
+  0.02360566]",0.7728072242255669,Police sanitaire vétérinaire (refondu),Santé vétérinaire,1993-09-10,,Dahir,
+c72c74ea-8d91-11f0-b104-74d8a75b0a87,"""
+
+
+
+**Prélèvement sur le crin végétal importé
+
+Article 3 : Montant du prélèvement**
+
+Le prélèvement prévu à l'article 2 ci-dessus est à la charge de l'exportateur.
+
+Le montant de ce prélèvement ainsi que ses modalités de perception sont fixés par arrêté du ministre chargé des finances, pris sur proposition du ministre du commerce, de l'industrie, des mines, de l'artisanat et de la marine marchande.
+
+""","[ 0.00578008  0.01190507  0.04859941 ...  0.0032878  -0.03671658
+  0.03709488]",0.777440190315245,Prélèvement sur le crin végétal importé,douanes,,,arrêté,

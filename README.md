@@ -1,141 +1,107 @@
-# Building a High-Performance RAG Solution with Pgvectorscale and Python
-
-This tutorial will guide you through setting up and using `pgvectorscale` with Docker and Python, leveraging OpenAI's powerful `text-embedding-3-small` model for embeddings. You'll learn to build a cutting-edge RAG (Retrieval-Augmented Generation) solution, combining advanced retrieval techniques (including hybrid search) with intelligent answer generation based on the retrieved context. Perfect for AI engineers looking to enhance their projects with state-of-the-art vector search and generation capabilities with the power of PostgreSQL.
-
-## YouTube Tutorial
-You can watch the full tutorial here on [YouTube](https://youtu.be/hAdEuDBN57g).
-
-## Pgvectorscale Documentation
-
-For more information about using PostgreSQL as a vector database in AI applications with Timescale, check out these resources:
-
-- [GitHub Repository: pgvectorscale](https://github.com/timescale/pgvectorscale)
-- [Blog Post: PostgreSQL and Pgvector: Now Faster Than Pinecone, 75% Cheaper, and 100% Open Source](https://www.timescale.com/blog/pgvector-is-now-as-fast-as-pinecone-at-75-less-cost/)
-- [Blog Post: RAG Is More Than Just Vector Search](https://www.timescale.com/blog/rag-is-more-than-just-vector-search/)
-- [Blog Post: A Python Library for Using PostgreSQL as a Vector Database in AI Applications](https://www.timescale.com/blog/a-python-library-for-using-postgresql-as-a-vector-database-in-ai-applications/)
-
-## Why PostgreSQL?
-
-Using PostgreSQL with pgvectorscale as your vector database offers several key advantages over dedicated vector databases:
-
-- PostgreSQL is a robust, open-source database with a rich ecosystem of tools, drivers, and connectors. This ensures transparency, community support, and continuous improvements.
-
-- By using PostgreSQL, you can manage both your relational and vector data within a single database. This reduces operational complexity, as there's no need to maintain and synchronize multiple databases.
-
-- Pgvectorscale enhances pgvector with faster search capabilities, higher recall, and efficient time-based filtering. It leverages advanced indexing techniques, such as the DiskANN-inspired index, to significantly speed up Approximate Nearest Neighbor (ANN) searches.
-
-Pgvectorscale Vector builds on top of [pgvector](https://github.com/pgvector/pgvector), offering improved performance and additional features, making PostgreSQL a powerful and versatile choice for AI applications.
-
-## Prerequisites
-
-- Docker
-- Python 3.7+
-- OpenAI API key
-- PostgreSQL GUI client
-
-## Steps
-
-1. Set up Docker environment
-2. Connect to the database using a PostgreSQL GUI client (I use TablePlus)
-3. Create a Python script to insert document chunks as vectors using OpenAI embeddings
-4. Create a Python function to perform similarity search
-
-## Detailed Instructions
-
-### 1. Set up Docker environment
-
-Create a `docker-compose.yml` file with the following content:
-
-```yaml
-services:
-  timescaledb:
-    image: timescale/timescaledb-ha:pg16
-    container_name: timescaledb
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_PASSWORD=password
-    ports:
-      - "5432:5432"
-    volumes:
-      - timescaledb_data:/var/lib/postgresql/data
-    restart: unless-stopped
-
-volumes:
-  timescaledb_data:
 ```
+```
+# Data Retrieval & Analysis System
 
-Run the Docker container:
+Implementation and adaptation by **Aymen Echchalim (2025)**  
+Based on original open-source foundations (see LICENSE).  
+
+---
+
+## 📌 Overview
+This project implements a robust pipeline for document processing, metadata extraction, and retrieval evaluation. It integrates parsing, storage, and evaluation layers into a cohesive system, with extensible modules for future improvements.
+
+---
+
+## 👨‍💻 My Contributions
+- **Parser system for metadata extraction**: Designed and implemented a parsing layer capable of extracting structured metadata from semi-structured/unstructured documents.  
+- **Extended functionality for `vector_store`**: Enhanced the vector storage system to support efficient indexing, retrieval, and persistence.  
+- **Integrated evaluation protocol**: Developed an evaluation pipeline to benchmark retrieval accuracy and reliability across different configurations.  
+- **Documentation & Unit Tests**: Wrote developer-friendly documentation, usage examples, and comprehensive unit tests for all major components.  
+
+---
+
+## 🚀 How to Run
+
+### 1. Clone the repository and set up environment
+```bash
+git clone <your-repo-url>
+cd <your-repo>
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+```
+### 2. Configure environment variables
+
+- Copy `example.env` to `.env`:
+
+```bash
+cp example.env .env
+```
+- Open `.env` and add your **OpenAI API key**.
+- Database credentials are already set for the local Docker instance.
+
+### 3. Start PostgreSQL with Timescale & pgvectorscale
+
+- Ensure Docker is running, then launch the container:
 
 ```bash
 docker compose up -d
 ```
+- The database will be available at:
+  - Host: `localhost`
+  - Port: `5432`
+  - User: `postgres`
+  - Password: `password`
+  - Database: `postgres`
 
-### 2. Connect to the database using a PostgreSQL GUI client
+### 4. Insert data into the vector store
 
-- Open client
-- Create a new connection with the following details:
-  - Host: localhost
-  - Port: 5432
-  - User: postgres
-  - Password: password
-  - Database: postgres
+Run the parser and embedding script to extract metadata and insert embeddings into PostgreSQL:
 
-### 3. Create a Python script to insert document chunks as vectors
+```bash
+python insert_vectors.py
+```
+### 5. Run similarity search queries
 
-See `insert_vectors.py` for the implementation. This script uses OpenAI's `text-embedding-3-small` model to generate embeddings.
+Use the query script to test hybrid/semantic retrieval:
 
-### 4. Create a Python function to perform similarity search
+```bash
+python similarity_search.py "your query here"
+```
+### 6. Evaluate retrieval performance
 
-See `similarity_search.py` for the implementation. This script also uses OpenAI's `text-embedding-3-small` model for query embedding.
+Execute the evaluation protocol to benchmark precision, recall, and ranking metrics:
 
-## Usage
+```bash
+python evaluate.py --config config/eval.yml
+```
+### 7. Run unit tests
 
-1. Create a copy of `example.env` and rename it to `.env`
-2. Open `.env` and fill in your OpenAI API key. Leave the database settings as is
-3. Run the Docker container
-4. Install the required Python packages using `pip install -r requirements.txt`
-5. Execute `insert_vectors.py` to populate the database
-6. Play with `similarity_search.py` to perform similarity searches
+```bash
+pytest tests/
+```
+---
 
-## Using ANN search indexes to speed up queries
+## 🗂 Project Structure
 
-Timescale Vector offers indexing options to accelerate similarity queries, particularly beneficial for large vector datasets (10k+ vectors):
+```
+project/
+│── parser/              # Metadata extraction system
+│── vector_store/        # Extended vector database features
+│── evaluation/          # Evaluation protocol
+│── docs/                # Documentation
+│── tests/               # Unit tests
+│── config/              # Config files
+│── main.py              # Entry point
+│── requirements.txt
+│── LICENSE
+```
+---
 
-1. Supported indexes:
-   - timescale_vector_index (default): A DiskANN-inspired graph index
-   - pgvector's HNSW: Hierarchical Navigable Small World graph index
-   - pgvector's IVFFLAT: Inverted file index
+## 📝 Notes
 
-2. The DiskANN-inspired index is Timescale's latest offering, providing improved performance. Refer to the [Timescale Vector explainer blog](https://www.timescale.com/blog/pgvector-is-now-as-fast-as-pinecone-at-75-less-cost/) for detailed information and benchmarks.
+- This project builds on existing open-source work but has been extensively adapted and extended.
+- For licensing terms of the original code, please refer to the `LICENSE` file.
 
-For optimal query performance, creating an index on the embedding column is recommended, especially for large vector datasets.
+```
 
-## Cosine Similarity in Vector Search
-
-### What is Cosine Similarity?
-
-Cosine similarity measures the cosine of the angle between two vectors in a multi-dimensional space. It's a measure of orientation rather than magnitude.
-
-- Range: -1 to 1 (for normalized vectors, which is typical in text embeddings)
-- 1: Vectors point in the same direction (most similar)
-- 0: Vectors are orthogonal (unrelated)
-- -1: Vectors point in opposite directions (most dissimilar)
-
-### Cosine Distance
-
-In pgvector, the `<=>` operator computes cosine distance, which is 1 - cosine similarity.
-
-- Range: 0 to 2
-- 0: Identical vectors (most similar)
-- 1: Orthogonal vectors
-- 2: Opposite vectors (most dissimilar)
-
-### Interpreting Results
-
-When you get results from similarity_search:
-
-- Lower distance values indicate higher similarity.
-- A distance of 0 would mean exact match (rarely happens with embeddings).
-- Distances closer to 0 indicate high similarity.
-- Distances around 1 suggest little to no similarity.
-- Distances approaching 2 indicate opposite meanings (rare in practice).
+```
